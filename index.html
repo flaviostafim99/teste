@@ -27,7 +27,48 @@
         {texto:"Explorar o jardim",proximo:2}
             ]
         },
+        {
+            titulo:"Dentro do castelo",
+            texto:"Você entra no castelo e encontra um coredor escuro.",
+            opcoes[
+                {texto:"sequir em frente"proximo:3 },
+                {texto:"voltar para entrada"proximo:0}
             ]
+        },
+        {
+            titulo:"jardim do castelo",
+            texto:"Você explora o jardim e encontra uma fonte", proximo:4
+            opcoes:[
+                {texto:"Beber da fonte" proximo:4},
+                texto:"Voltar para a entrada"proximo:0
+            ]
+        },
+        //add mais historia aq
+            ];
+            let indiceAtual = 0;
+
+
+            function escolherOpcao (opcao){
+                let historiaAtual = historia[indiceAtual];
+                let opcaoEscolhida = historiaAtual.opcoes[opcao-1];
+                indiceAtual = opcaoEscolhid.proximo;
+                atualizarHistoria();
+            }
+
+
+            function atualizarHistoria(){
+                let historiaAtual = historia[indiceAtual];
+                document.getElementebyld("titulo").innerText = historiaAtual.titulo;
+                document.getElementsByld("historia").innerText = historiaAtual.texto;
+                let opcoesHtml = "";
+                for (let i = 0; i <historiaAtual.opcoes.length; i++){
+                    opcoesHtml += <button id="opcao${i + 1}" onclick= "escolherOpcao(${i + 1})">${historiaAtual.opcoes[i].texto}</button>;
+                }
+                document.querySelector(".opcoes").innerHTML = opcoesHtml;
+            }
+
+
+            atualizarHistoria();
         </script>
     </body>
 </html>
